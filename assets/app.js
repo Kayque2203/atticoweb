@@ -1,0 +1,33 @@
+(function(){
+const S=window.SITE,$=s=>document.querySelector(s);
+const wa=t=>`https://wa.me/${S.whatsapp}${t?`?text=${encodeURIComponent(t)}`:""}`;
+const ic='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="';
+const P={l:"M4 4h16v16H4zM4 9h16M9 9v11",i:"M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6",c:"M3 7h18l-2 12H5zM8 7a4 4 0 0 1 8 0",m:"M7 3h10v18H7zM11 18h2",p:"M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z",s:"M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"};
+const svc=[["l","Landing Pages","Páginas para apresentar produtos, serviços e campanhas, com foco em clareza e conversão."],["i","Sites institucionais","Websites para empresas apresentarem sua marca, serviços, informações e canais de contato."],["c","Sites comerciais","Experiências digitais para negócios que desejam apresentar produtos e serviços de forma profissional."],["m","Cardápios digitais","Apresentação de produtos, categorias e informações de restaurantes e estabelecimentos alimentícios."],["p","Projetos personalizados","Experiências digitais adaptadas às necessidades específicas de cada negócio."],["s","Soluções digitais","Espaço para futuras soluções com sistemas, integrações e automações."]];
+$("#services").innerHTML=svc.map(([k,t,d])=>`<article class="card">${ic}${P[k]}"/></svg><h3>${t}</h3><p>${d}</p><a class="btn ghost" href="#contato" data-svc="${t}">Solicitar orçamento</a></article>`).join("");
+$("#diffs").innerHTML=["Design personalizado","Responsividade","Experiência intuitiva","Integração com WhatsApp","Estrutura preparada para SEO","Atenção aos detalhes","Desenvolvimento organizado","Soluções adaptadas ao negócio"].map(t=>`<div class="card"><h3>${t}</h3></div>`).join("");
+const faq=[["Por que minha empresa precisa de um site?","Um site apresenta seu negócio, seus serviços e seus contatos em um lugar que você controla, disponível para qualquer pessoa que procure por você."],["Quanto custa desenvolver um site?","Temos uma proposta de entrada a partir de R$ "+S.plan.price+" por "+S.plan.period+". Projetos personalizados dependem do que o negócio precisa e são orçados sob consulta."],["Como funciona a contratação?","Você envia o pedido de orçamento, conversamos pelo WhatsApp, alinhamos escopo e condições e então começamos."],["Qual o prazo de desenvolvimento?","Depende do tamanho do projeto. O prazo é combinado na conversa inicial."],["O site funciona em celulares?","Sim. Os sites são desenvolvidos para funcionar em celulares, tablets e computadores."],["Como funcionam domínio e hospedagem?","São definidos caso a caso. Informamos o que está incluso antes de fechar qualquer contratação."],["Posso solicitar alterações?","Sim. As condições de revisões e alterações futuras são combinadas na contratação."],["Como entrar em contato?","Pelo formulário desta página, pelo WhatsApp, pelo Instagram ou por e-mail."]];
+$("#faqs").innerHTML=faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+$("#pl").textContent=S.plan.label;$("#pp").textContent=S.plan.price;$("#pe").textContent=S.plan.period;$("#pn").textContent=S.plan.note;
+const cats=["Todos","Institucional","Alimentação","Beleza e estética","Comércio","Serviços"];let cur="Todos";
+function draw(){$("#filters").innerHTML=cats.map(c=>`<button aria-pressed="${c===cur}" data-c="${c}">${c}</button>`).join("");
+const l=S.projects.filter(p=>cur==="Todos"||p.filter===cur);
+$("#projects").innerHTML=l.length?l.map(p=>`<article class="card">${p.cover?`<img class="cover" src="${p.cover}" alt="Captura de tela do projeto ${p.name}" loading="lazy" width="640" height="400">`:`<div class="cover" style="background:${p.c1};color:${p.c2}">${p.name}</div>`}<span class="badge">${p.badge||"Projeto demonstrativo"} · ${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="tags">${p.tech.map(t=>`<span>${t}</span>`).join("")}</div><div class="row"><a class="btn" href="${p.link||"demo/index.html?p="+p.slug}" target="_blank" rel="noopener">Visualizar projeto</a><button class="btn ghost" data-d="${p.slug}">Detalhes do projeto</button></div></article>`).join(""):'<p class="lead">Nenhum projeto nesta categoria ainda.</p>'}
+draw();
+$("#filters").addEventListener("click",e=>{const c=e.target.dataset.c;if(c){cur=c;draw()}});
+$("#projects").addEventListener("click",e=>{const s=e.target.dataset.d;if(!s)return;const p=S.projects.find(x=>x.slug===s),d=$("#dlg");
+d.innerHTML=`<h2 id="dt">${p.name}</h2><p class="badge">${p.badge||"Conceito desenvolvido pela ATTICOWEB"}</p><h3>Contexto</h3><p>${p.context}</p><h3>Objetivo</h3><p>${p.goal}</p><h3>Solução</h3><p>${p.solution}</p><h3>Recursos</h3><div class="tags">${p.features.map(t=>`<span>${t}</span>`).join("")}</div><form method="dialog"><button class="btn">Fechar</button></form>`;d.showModal()});
+$("#priv").addEventListener("click",e=>{e.preventDefault();$("#pv").showModal()});
+$("#quote").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target);
+window.open(wa(`Olá! Quero solicitar um orçamento.\nNome: ${f.get("n")}\nEmpresa: ${f.get("e")||"-"}\nSegmento: ${f.get("s")||"-"}\nServiço: ${f.get("v")}\nProjeto: ${f.get("d")}`),"_blank","noopener")});
+document.querySelectorAll("[data-wa]").forEach(a=>{a.href=wa("Olá! Quero solicitar um orçamento com a ATTICOWEB.");a.target="_blank";a.rel="noopener"});
+document.querySelectorAll("[data-ig]").forEach(a=>{if(S.instagram){a.href=S.instagram;a.target="_blank";a.rel="noopener"}else a.parentElement.hidden=true});
+document.querySelectorAll("[data-mail]").forEach(a=>{if(S.email)a.href="mailto:"+S.email;else a.parentElement.hidden=true});
+document.querySelectorAll("[data-svc]").forEach(a=>a.addEventListener("click",()=>{const s=$("#quote select");[...s.options].forEach(o=>{if(o.text===a.dataset.svc)s.value=o.text})}));
+$("#yr").textContent=new Date().getFullYear();
+const m=$("#menu"),n=$("#nav");m.addEventListener("click",()=>{const o=n.classList.toggle("open");m.setAttribute("aria-expanded",o)});
+n.addEventListener("click",e=>{if(e.target.tagName==="A"){n.classList.remove("open");m.setAttribute("aria-expanded","false")}});
+const links=[...n.querySelectorAll("a[href^='#']:not(.btn)")];
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.hash==="#"+x.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main>section").forEach(s=>io.observe(s));
+})();

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary &amp; Gabi Petshop | Projeto demonstrativo</title>
+    <meta name="description" content="Site demonstrativo de petshop com produtos, serviços e contato. Marca fictícia, projeto de estudo.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="img/patinha-preta.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>
+            <img src="img/logo-mari-e-gabi-petshop.svg" alt="logo-mari-e-gabi-petshop">
+        </h1>
+    </header>
+
+    <NAV>
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#produto">Produtos</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li id="itemContato"><a href="#contato">Contato</a></li>
+        </ul>
+    </NAV>
+
+    <section class="fundo-verde">
+        <div class="container flex-container">
+            <div class="col">
+                <h2 id="sobre">Sobre nós</h2>
+                <pNone>A Mary &amp; Gabi Petshop é uma marca fictícia criada para este projeto. A ideia é mostrar como um petshop pode apresentar a loja de forma acolhedora e clara.</p>
+                <pNone>Em poucos segundos o visitante encontra o que a loja oferece e como falar com ela.</p>
+            </div>
+            <div class="col">
+                <img src="img/img-sobre.jpg" alt="Imagem filhotes cachorro">
+            </div>
+        </div>
+
+    </section>
+
+    <section id="produto">
+        <div class="container">
+            <h2 class="texto-centralizado">Produtos</h2>
+            <p class="texto-centralizado">Alguns produtos em destaque. Os preços abaixo são demonstrativos.</p>
+
+            <div class="flex-container">
+                <div class="produto">
+                    <figure>
+                        <img src="img/produto-1.jpg" alt="Pet Produto #1">
+                    </figure>
+                    <h3>Pet Produto #1</h3>
+                    <p>R$ 150,00</p>
+                    <a href="#contato" class="btn-pata comprar">
+                        <img src="img/patinha-preta.png" alt="Patinha preta">
+                        Comprar
+                    </a>
+
+                </div>
+                <div class="produto">
+                    <figure>
+                        <img src="img/produto-2.jpg" alt="Pet Produto #2">
+                    </figure>
+                    <h3>Pet Produto #2</h3>
+                    <p>R$ 160,00</p>
+                    <a href="#contato" class="btn-pata comprar">
+                        <img src="img/patinha-preta.png" alt="Patinha preta">
+                        Comprar
+                    </a>
+
+                </div>
+                <div class="produto">
+                    <figure>
+                        <img src="img/produto-3.jpg" alt="Pet Produto #3">
+                    </figure>
+                    <h3>Pet Produto #3</h3>
+                    <p>R$ 170,00</p>
+                    <a href="#contato" class="btn-pata comprar">
+                        <img src="img/patinha-preta.png" alt="Patinha preta">
+                        Comprar
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="fundo-verde">
+        <div class="container flex-container">
+            <div class="col">
+                <h2 id="servicos">Serviços</h2>
+                <pNone>Banho e tosa, ração e acessórios para o seu pet, com atendimento combinado pelo WhatsApp. Serviços e valores demonstrativos.</p>
+                
+            </div>
+            <div class="col">
+                <img src="img/img-galeria-1.jpg" alt="Imagem filhotes cachorro">
+                <img src="img/img-galeria-2.jpg" alt="Cachorro em passeio">
+                <img src="img/img-galeria-3.jpg" alt="Gato descansando">
+                <img src="img/img-galeria-4.jpg" alt="Pet brincando">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contato">
+        <div class="container">
+            <div class="texto-centralizado">
+                <h2>Contato</h2>
+                <pNone>Fale com a loja pelo formulário. Ao enviar, abrimos uma conversa no WhatsApp com a sua mensagem.</p>
+                
+            </div>
+
+            <div class="flex-container">
+                <div class="col">
+                    <form id="f">
+                        <label for="name">
+                            <strong>Nome:</strong>
+                            <input type="text" id="name" required placeholder="Insira o seu nome completo">
+                        </label>
+                        <label for="tel">
+                            <strong>Telefone:</strong>
+                            <input type="tel" id="tel" placeholder="(11) 0000-0000">
+                        </label>
+                        <label for="signed">
+                            <strong>Assunto:</strong>
+                            <input type="text" id="signed" placeholder=" Insira aqui o assunto da mensagem">
+                        </label>
+                        <label for="msg">
+                            <strong>Mensagem:</strong>
+                            <textarea name="msg" id="msg" cols="30" rows="10"
+                                placeholder="Insira aqui sua mensagem"></textarea>
+                        </label>
+                        <div>
+                            <button class="btn-pata" type="submit">
+                                <img src="img/patinha-preta.png" alt="">Enviar pelo WhatsApp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    
+                    <p>Endereço e telefone fictícios, usados apenas nesta demonstração.<br><strong>Endereço:</strong> Rua Exemplo, 123, São Paulo<br><strong>Tel:</strong> (11) 0000-0000</p>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="container texto-centralizado">
+        <hr>
+        <div class="texto-centralizado">
+            <p><strong>Projeto demonstrativo de estudo. Mary &amp; Gabi Petshop é uma marca fictícia. Desenvolvido por Kayque Attico da Silva.</strong></p>
+
+        </div>
+    </footer>
+
+
+<script src="../../config.js"></script>
+    <script>
+    (function(){var n=(window.SITE||{}).whatsapp;if(!n)return;
+    function go(t){window.open("https://wa.me/"+n+"?text="+encodeURIComponent(t+" (demonstração Mary & Gabi Petshop)"),"_blank","noopener")}
+    document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();go("Olá! Sou "+document.getElementById("name").value+". Assunto: "+document.getElementById("signed").value+". "+document.getElementById("msg").value)});
+    document.querySelectorAll(".comprar").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var p=a.closest(".produto");go("Olá! Quero comprar: "+p.querySelector("h3").textContent+" - "+p.querySelector("p").textContent)})});
+    })();
+    </script>
+</body>
+
+</html>
